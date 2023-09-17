@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,14 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [FrontendController::class, 'welcome'])->name('welcome');
+Route::controller(FrontendController::class)->group(function () {
+    Route::get('/', 'welcome')->name('welcome');
+});
 
-// Route::get('/', function () {
-//     return view('frontend.pages.landing');
-// });
-// Route::get('/', function () {
-//     return view('backend.pages.landing');
-// });
 
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
