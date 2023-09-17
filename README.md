@@ -1,2 +1,2 @@
 # wildcare
-Cms website for Wild Care
+website for Wild Care
