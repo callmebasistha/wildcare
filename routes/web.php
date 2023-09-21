@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SliderController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +24,11 @@ Route::controller(FrontendController::class)->group(function () {
 
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
-    Route::group(['prefix' => 'sliders', 'as' => 'sliders.'], function () {
+    Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
+        Route::get('/', [HomeController::class, 'index'])->name('index');
+        Route::group(['prefix' => 'sliders', 'as' => 'sliders.'], function () {
+            Route::get('/', [SliderController::class, 'index'])->name('index');
+            Route::post('/', [SliderController::class, 'store'])->name('store');
+        });
     });
 });
