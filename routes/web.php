@@ -30,6 +30,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/', [SliderController::class, 'index'])->name('index');
             Route::post('/', [SliderController::class, 'store'])->name('store');
             Route::get('/delete/{id}', [SliderController::class, 'destroy'])->name('destroy');
+            Route::post('/update/{id}', [SliderController::class, 'update'])->name('update');
         });
     });
 });

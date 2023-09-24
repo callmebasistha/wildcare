@@ -32,7 +32,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="exampleInputUsername1">Image/Video</label>
-                                <input name="file" type="file"
+                                <input name="file" type="file" onchange="fileValidation(true,4,150)"
                                     class="@error('file') is-invalid @enderror form-control" id="exampleInputUsername1">
                                 @error('file')
                                     <span class="text-danger">{{ $message }}</span>
@@ -108,14 +108,72 @@
                                     <button data-confirm-delete="true" type="button" onclick="confirmDelete(`{{route('dashboard.sliders.destroy',$slider->id)}}`,`{{route('dashboard.sliders.index')}}`)" class="btn btn-danger btn-rounded btn-icon">
                                         <i class="mdi mdi-delete-forever"></i>
                                     </button>
-{{--                                    <a href="{{ route('dashboard.sliders.delete', $slider->id) }}" class="btn btn-danger btn-rounded btn-icon" data-confirm-delete="true">delete</a>--}}
 
-                                    <button type="button" class="btn btn-info btn-rounded btn-icon">
-                                        <i class="mdi mdi-grease-pencil"></i>
-                                    </button>
+                                    <button type="button" class="btn btn-info btn-rounded btn-icon" data-bs-toggle="modal" data-bs-target="#slider{{$slider->id}}">
+                                        <i class="mdi mdi-grease-pencil"></i>                                    </button>
                                 </td>
 
                             </tr>
+
+
+
+
+
+
+                            <div class="modal fade" id="slider{{$slider->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Edit Slider</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="forms-sample" method="POST" enctype="multipart/form-data"
+                                                  action="{{ route('dashboard.sliders.update',$slider->id) }}">
+                                                @csrf
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="form-group">
+                                                            <label for="exampleInputUsername1">Title</label>
+                                                            <input value="{{$slider->title}}" name="title" type="text" class="form-control" id="exampleInputUsername1"
+                                                                   placeholder="Title">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="form-group">
+                                                            <label for="exampleInputUsername1">Sub Title</label>
+                                                            <input value="{{$slider->sub_title}}" name="sub_title" type="text" class="form-control" id="exampleInputUsername1"
+                                                                   placeholder="Sub Title">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="form-group">
+                                                            <label for="exampleInputUsername1">Image/Video</label>
+                                                            <input name="file" type="file" onchange="fileValidation(false,4,150)"
+                                                                   class="form-control" id="exampleInputUsername1">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="form-group">
+                                                            <label for="exampleInputUsername1">Status</label>
+                                                            <select class="form-control" name="status">
+                                                                <option value="1" {{$slider->status=='1'?'selected':''}}">Active</option>
+                                                                <option value="0" {{$slider->status=='0'?'selected':''}}>In Active</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+{{--                            edit form modal end--}}
                         @endforeach
 
                     </tbody>

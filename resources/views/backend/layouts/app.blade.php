@@ -330,6 +330,7 @@
 {{--    swal js cdn--}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
+
 {{--        delete confirm functon start--}}
 
             function confirmDelete(deleteRoute, redirectRoute){
@@ -351,6 +352,78 @@
             }
 
 {{--        delete confirm functon end--}}
+
+
+{{--        file validation start--}}
+
+        function fileValidation(fileRequred,imageSize=null,videoSize=null,pdfSize=null){
+
+            if($(event.target).next().attr('class')!=undefined && $(event.target).next().attr('class').includes('fileerror')){
+                $(event.target).next().remove()
+            }
+            let files=event.target.files;
+
+            let error=false;
+            let errorMessage='';
+            if(fileRequred && files.length<=0){
+                error=true;
+                errorMessage='File Required';
+            }
+            for(let i=0;i<files.length;i++){
+                let size=files[i].size/1024/1024; //in MB
+                let type=files[i].type.includes('image')?'image':(files[i].type.includes('video')||files[i].type.includes('ogg'))?'video':files[i].type.includes('pdf')?'pdf':'';
+                debugger;
+                if(type=='image' ){
+                    if(imageSize==null){
+                        error=true;
+                        errorMessage='Invalid File Type';
+                        break;
+                    }
+                    if(imageSize!=null && size>imageSize){
+                        error=true;
+                        errorMessage='Image Size must be less or equal to '+imageSize+ 'MB';
+                        break;
+                    }
+                }
+                if(type=='video'){
+                    if(videoSize==null){
+                        error=true;
+                        errorMessage='Invalid File Type';
+                        break;
+                    }
+                    if(videoSize!=null && size>videoSize){
+                        error=true;
+                        errorMessage='Image Size must be less or equal to '+videoSize+ 'MB';
+                        break;
+                    }
+                }
+                if(type=='pdf' ){
+                    if(pdfSize==null){
+                        error=true;
+                        errorMessage='Invalid File Type';
+                        break;
+                    }
+                    if(pdfSize!=null && size>pdfSize){
+                        error=true;
+                        errorMessage='Image Size must be less or equal to '+pdfSize+ 'MB';
+                        break;
+                    }
+                }
+                if(type==''){
+                    error=true;
+                    errorMessage='Invalid File Type';
+                    break;
+                }
+            }
+            if(error){
+                $(`<p class="fileerror text-danger">${errorMessage}</p>`).insertAfter($(event.target))
+                $(event.target).wrap('<form>').closest(
+                    'form').get(0).reset();
+                $(event.target).unwrap();
+            }
+
+        }
+{{--        file validation end--}}
     </script>
 </body>
 
