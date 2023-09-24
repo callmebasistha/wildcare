@@ -29,6 +29,7 @@ Route::middleware(['auth'])->group(function () {
         Route::group(['prefix' => 'sliders', 'as' => 'sliders.'], function () {
             Route::get('/', [SliderController::class, 'index'])->name('index');
             Route::post('/', [SliderController::class, 'store'])->name('store');
+            Route::get('/delete/{id}', [SliderController::class, 'destroy'])->name('destroy');
         });
     });
 });

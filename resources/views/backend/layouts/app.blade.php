@@ -327,6 +327,31 @@
     <script src="{{ asset('backend/js/todolist.js') }}"></script>
     @include('sweetalert::alert')
     <!-- End custom js for this page -->
+{{--    swal js cdn--}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+{{--        delete confirm functon start--}}
+
+            function confirmDelete(deleteRoute, redirectRoute){
+                swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover this data!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            window.location.href=deleteRoute;
+                        }
+                        // else {
+                        //     swal("Your data is safe!");
+                        // }
+                    });
+            }
+
+{{--        delete confirm functon end--}}
+    </script>
 </body>
 
 </html>

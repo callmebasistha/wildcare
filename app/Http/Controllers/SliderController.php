@@ -43,4 +43,17 @@ class SliderController extends Controller
             return back();
         }
     }
+
+
+    function destroy($id)
+    {
+        $slider = Slider::findOrFail($id);
+        if($slider){
+            $slider->delete();
+            Alert::toast('Slider Deleted','success');
+            return back();
+        }
+        abort(404);
+
+    }
 }

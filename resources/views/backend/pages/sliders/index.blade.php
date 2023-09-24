@@ -105,9 +105,11 @@
                                         {{ $slider->status == 1 ? 'Active' : 'In Active' }}</span>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-danger btn-rounded btn-icon">
+                                    <button data-confirm-delete="true" type="button" onclick="confirmDelete(`{{route('dashboard.sliders.destroy',$slider->id)}}`,`{{route('dashboard.sliders.index')}}`)" class="btn btn-danger btn-rounded btn-icon">
                                         <i class="mdi mdi-delete-forever"></i>
                                     </button>
+{{--                                    <a href="{{ route('dashboard.sliders.delete', $slider->id) }}" class="btn btn-danger btn-rounded btn-icon" data-confirm-delete="true">delete</a>--}}
+
                                     <button type="button" class="btn btn-info btn-rounded btn-icon">
                                         <i class="mdi mdi-grease-pencil"></i>
                                     </button>
