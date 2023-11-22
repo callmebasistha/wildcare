@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Slider;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
     public function welcome()
     {
-        return view('frontend.pages.landing');
+        $sliders = Slider::with('media')->get();
+        return view('frontend.pages.landing', compact("sliders"));
     }
 }
