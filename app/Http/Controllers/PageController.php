@@ -48,11 +48,32 @@ class PageController extends Controller
                     }
                 }
             });
-            Alert::toast('Section Added', 'success');
+            Alert::toast('Page Added', 'success');
             return back();
         } catch (Throwable $e) {
             Alert::toast($e->getMessage(), 'error');
             return back();
         }
+    }
+
+
+    public function destroy($id)
+    {
+        $page = Page::findOrFail($id);
+        if ($page) {
+            try {
+                DB::transaction(function () use ($page) {
+                    DB::table('page_section')->where('page_id', $page->id)->delete();
+                    Page::where('page_id', $page->id)->update(['page_id', null]);
+                    $page->delete();
+                });
+                Alert::toast('Page Deleted', 'success');
+                return back();
+            } catch (Throwable $e) {
+                Alert::toast($e->getMessage(), 'error');
+                return back();
+            }
+        }
+        abort(404);
     }
 }

@@ -79,4 +79,25 @@ class SectionController extends Controller
             return back();
         }
     }
+
+
+    public function destroy($id)
+    {
+        $section = Section::findOrFail($id);
+        if ($section) {
+            try {
+                DB::transaction(function () use ($section) {
+                    DB::table('page_section')->where('section_id', $section->id)->delete();
+                    Section::where('section_id', $section->id)->update(['section_id', null]);
+                    $section->delete();
+                });
+                Alert::toast('Section Deleted', 'success');
+                return back();
+            } catch (Throwable $e) {
+                Alert::toast($e->getMessage(), 'error');
+                return back();
+            }
+        }
+        abort(404);
+    }
 }
