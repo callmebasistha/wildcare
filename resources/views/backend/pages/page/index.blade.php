@@ -77,7 +77,7 @@
                                     {{ $page->slug == null ? '-' : $page->slug }}
                                 </td>
                                 <td>
-                                    {{ $page->page_id == null ? '-' : $page->page_id }}
+                                    {{ $page->page_id == null ? '-' : $page->parentPage->title }}
                                 </td>
                                 <td>
                                     <span class="badge {{ $page->status == 1 ? 'badge-info' : 'badge-danger' }}">
@@ -109,5 +109,4 @@
 @endsection
 
 @push('scripts')
-    
 @endpush

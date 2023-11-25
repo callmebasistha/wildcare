@@ -18,8 +18,12 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="exampleInputUsername1">Title</label>
-                                <input name="title" type="text" class="form-control" id="exampleInputUsername1"
+                                <input name="title" type="text"
+                                    class="form-control @error('title') is-invalid @enderror" id="exampleInputUsername1"
                                     placeholder="Title">
+                                @error('title')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -42,7 +46,7 @@
                             <div class="form-group">
                                 <label for="exampleInputUsername1">Sub Page of</label>
                                 <select class="form-control" name="page_id">
-                                    <option value="null">None</option>
+                                    <option value={{ null }}>None</option>
                                     @foreach ($pages as $page)
                                         <option value="{{ $page->id }}">{{ $page->title }}</option>
                                     @endforeach

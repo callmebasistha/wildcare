@@ -25,6 +25,7 @@
                             <th> Title </th>
                             <th> Sub Title </th>
                             <th> Description </th>
+                            <th> Parent Section </th>
                             <th> Status </th>
                             <th> Action </th>
                         </tr>
@@ -42,6 +43,7 @@
                                 <td>
                                     {{ $section->short_description == null ? '-' : $section->short_description }}
                                 </td>
+                                <td>{{ $section->section_id == null ? '-' : $section->parentSection->title }}</td>
                                 <td>
                                     <span class="badge {{ $section->status == 1 ? 'badge-info' : 'badge-danger' }}">
                                         {{ $section->status == 1 ? 'Active' : 'In Active' }}</span>

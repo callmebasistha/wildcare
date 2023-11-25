@@ -15,7 +15,7 @@ class SectionController extends Controller
 {
     public function index()
     {
-        $sections = Section::paginate(10);
+        $sections = Section::with('page', 'parentSection')->paginate(10);
         return view('backend.pages.section.index', compact('sections'));
     }
 
@@ -54,7 +54,7 @@ class SectionController extends Controller
                 $section = Section::create($data);
                 if (array_key_exists('pages', $data)) {
                     foreach ($data['pages'] as $page) {
-                        if ($section['section_id'] != null) {
+                        if ($section['section_id'] == null) {
                             $sectionId = $section['id'];
                         } else {
                             $sectionId = $section['section_id'];
@@ -62,10 +62,14 @@ class SectionController extends Controller
                         DB::table('page_section')->insert(
                             [
                                 'page_id' => $page,
-                                'section_id' => $sectionId
+                                'section_id' => $sectionId,
+                                'hierarchy' => getLatestHierarchy($sectionId, $page)
                             ]
                         );
                     }
+                }
+                if (array_key_exists('file', $data)) {
+                    $section->addMedia($data['file'])->toMediaCollection('file');
                 }
             });
             Alert::toast('Section Added', 'success');

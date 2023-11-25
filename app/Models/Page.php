@@ -15,4 +15,10 @@ class Page extends Model
         'page_id',
         'status'
     ];
+
+
+    public function parentPage()
+    {
+        return $this->belongsTo(Page::class, 'page_id');
+    }
 }
