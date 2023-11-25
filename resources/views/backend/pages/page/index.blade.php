@@ -85,7 +85,7 @@
                                 </td>
                                 <td>
                                     <button data-confirm-delete="true" type="button"
-                                        onclick="confirmDelete(`{{ route('dashboard.pages.destroy', $page->id) }}`,`{{ route('dashboard.sliders.index') }}`)"
+                                        onclick="confirmDelete(`{{ route('dashboard.pages.destroy', $page->id) }}`,`{{ route('dashboard.pages.index') }}`)"
                                         class="btn btn-danger btn-rounded btn-icon">
                                         <i class="mdi mdi-delete-forever"></i>
                                     </button>
