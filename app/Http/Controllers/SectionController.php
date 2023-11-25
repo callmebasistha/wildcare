@@ -88,7 +88,7 @@ class SectionController extends Controller
             try {
                 DB::transaction(function () use ($section) {
                     DB::table('page_section')->where('section_id', $section->id)->delete();
-                    Section::where('section_id', $section->id)->update(['section_id', null]);
+                    Section::where('section_id', $section->id)->update(['section_id' => null]);
                     $section->delete();
                 });
                 Alert::toast('Section Deleted', 'success');

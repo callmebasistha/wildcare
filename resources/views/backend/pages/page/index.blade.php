@@ -84,14 +84,36 @@
                                         {{ $page->status == 1 ? 'Active' : 'In Active' }}</span>
                                 </td>
                                 <td>
-                                    <button data-confirm-delete="true" type="button"
-                                        onclick="confirmDelete(`{{ route('dashboard.pages.destroy', $page->id) }}`,`{{ route('dashboard.pages.index') }}`)"
-                                        class="btn btn-danger btn-rounded btn-icon">
-                                        <i class="mdi mdi-delete-forever"></i>
-                                    </button>
+                                    <button type="button" class="btn btn-info btn-rounded btn-icon" data-bs-toggle="modal"
+                                        data-bs-target="#delete{{ $page->id }}">
+                                        <i class="mdi mdi-delete-forever"></i> </button>
+
+
                                 </td>
 
                             </tr>
+
+                            {{-- delete modal start --}}
+                            <div class="modal fade" id="delete{{ $page->id }}" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-md modal-dialog-scrollable">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Delete Page</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="modal-footer">
+                                                <a href="{{ route('dashboard.pages.destroy', $page->id) }}"
+                                                    class="btn btn-danger">Delete</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- delete modal end --}}
                         @endforeach
 
                     </tbody>

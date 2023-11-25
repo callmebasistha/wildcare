@@ -64,7 +64,7 @@ class PageController extends Controller
             try {
                 DB::transaction(function () use ($page) {
                     DB::table('page_section')->where('page_id', $page->id)->delete();
-                    Page::where('page_id', $page->id)->update(['page_id', null]);
+                    Page::where('page_id', $page->id)->update(['page_id' => null]);
                     $page->delete();
                 });
                 Alert::toast('Page Deleted', 'success');
