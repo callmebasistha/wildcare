@@ -26,8 +26,10 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo" href="index.html"><img src="{{ asset('backend/images/logo.svg') }}" alt="logo" /></a>
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{ asset('backend/images/logo-mini.svg') }}" alt="logo" /></a>
+                <a class="navbar-brand brand-logo" href="index.html"><img src="{{ asset('backend/images/logo.svg') }}"
+                        alt="logo" /></a>
+                <a class="navbar-brand brand-logo-mini" href="index.html"><img
+                        src="{{ asset('backend/images/logo-mini.svg') }}" alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-stretch">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -39,13 +41,15 @@
                             <div class="input-group-prepend bg-transparent">
                                 <i class="input-group-text border-0 mdi mdi-magnify"></i>
                             </div>
-                            <input type="text" class="form-control bg-transparent border-0" placeholder="Search projects">
+                            <input type="text" class="form-control bg-transparent border-0"
+                                placeholder="Search projects">
                         </div>
                     </form>
                 </div>
                 <ul class="navbar-nav navbar-nav-right">
                     <li class="nav-item nav-profile dropdown">
-                        <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" id="profileDropdown" href="#"
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             <div class="nav-profile-img">
                                 <img src="{{ asset('backend/images/faces/face1.jpg') }}" alt="image">
                                 <span class="availability-status online"></span>
@@ -68,18 +72,22 @@
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#"
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="mdi mdi-email-outline"></i>
                             <span class="count-symbol bg-warning"></span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+                            aria-labelledby="messageDropdown">
                             <h6 class="p-3 mb-0">Messages</h6>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item preview-item">
                                 <div class="preview-thumbnail">
-                                    <img src="{{ asset('backend/images/faces/face4.jpg') }}" alt="image" class="profile-pic">
+                                    <img src="{{ asset('backend/images/faces/face4.jpg') }}" alt="image"
+                                        class="profile-pic">
                                 </div>
-                                <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                                <div
+                                    class="preview-item-content d-flex align-items-start flex-column justify-content-center">
                                     <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Mark send you a message
                                     </h6>
                                     <p class="text-gray mb-0"> 1 Minutes ago </p>
@@ -88,9 +96,11 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item preview-item">
                                 <div class="preview-thumbnail">
-                                    <img src="{{ asset('backend/images/faces/face2.jpg') }}" alt="image" class="profile-pic">
+                                    <img src="{{ asset('backend/images/faces/face2.jpg') }}" alt="image"
+                                        class="profile-pic">
                                 </div>
-                                <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                                <div
+                                    class="preview-item-content d-flex align-items-start flex-column justify-content-center">
                                     <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Cregh send you a
                                         message</h6>
                                     <p class="text-gray mb-0"> 15 Minutes ago </p>
@@ -99,9 +109,11 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item preview-item">
                                 <div class="preview-thumbnail">
-                                    <img src="{{ asset('backend/images/faces/face3.jpg') }}" alt="image" class="profile-pic">
+                                    <img src="{{ asset('backend/images/faces/face3.jpg') }}" alt="image"
+                                        class="profile-pic">
                                 </div>
-                                <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                                <div
+                                    class="preview-item-content d-flex align-items-start flex-column justify-content-center">
                                     <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Profile picture
                                         updated</h6>
                                     <p class="text-gray mb-0"> 18 Minutes ago </p>
@@ -112,11 +124,13 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
+                        <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
+                            data-bs-toggle="dropdown">
                             <i class="mdi mdi-bell-outline"></i>
                             <span class="count-symbol bg-danger"></span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+                            aria-labelledby="notificationDropdown">
                             <h6 class="p-3 mb-0">Notifications</h6>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item preview-item">
@@ -125,7 +139,8 @@
                                         <i class="mdi mdi-calendar"></i>
                                     </div>
                                 </div>
-                                <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                                <div
+                                    class="preview-item-content d-flex align-items-start flex-column justify-content-center">
                                     <h6 class="preview-subject font-weight-normal mb-1">Event today</h6>
                                     <p class="text-gray ellipsis mb-0"> Just a reminder that you have an event today
                                     </p>
@@ -138,7 +153,8 @@
                                         <i class="mdi mdi-settings"></i>
                                     </div>
                                 </div>
-                                <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                                <div
+                                    class="preview-item-content d-flex align-items-start flex-column justify-content-center">
                                     <h6 class="preview-subject font-weight-normal mb-1">Settings</h6>
                                     <p class="text-gray ellipsis mb-0"> Update dashboard </p>
                                 </div>
@@ -150,7 +166,8 @@
                                         <i class="mdi mdi-link-variant"></i>
                                     </div>
                                 </div>
-                                <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                                <div
+                                    class="preview-item-content d-flex align-items-start flex-column justify-content-center">
                                     <h6 class="preview-subject font-weight-normal mb-1">Launch Admin</h6>
                                     <p class="text-gray ellipsis mb-0"> New admin wow! </p>
                                 </div>
@@ -170,7 +187,8 @@
                         </a>
                     </li>
                 </ul>
-                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                    data-toggle="offcanvas">
                     <span class="mdi mdi-menu"></span>
                 </button>
             </div>
@@ -208,15 +226,30 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                        <a class="nav-link" href="{{ route('dashboard.pages.index') }}">
+                            <span class="menu-title">Pages</span>
+                            <i class="mdi mdi-contacts menu-icon"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('dashboard.sections.index') }}">
+                            <span class="menu-title">Page Sections</span>
+                            <i class="mdi mdi-contacts menu-icon"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
+                            aria-controls="ui-basic">
                             <span class="menu-title">Basic UI Elements</span>
                             <i class="menu-arrow"></i>
                             <i class="mdi mdi-crosshairs-gps menu-icon"></i>
                         </a>
                         <div class="collapse" id="ui-basic">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
+                                <li class="nav-item"> <a class="nav-link"
+                                        href="pages/ui-features/buttons.html">Buttons</a></li>
+                                <li class="nav-item"> <a class="nav-link"
+                                        href="pages/ui-features/typography.html">Typography</a></li>
                             </ul>
                         </div>
                     </li>
@@ -241,7 +274,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#general-pages" aria-expanded="false"
+                            aria-controls="general-pages">
                             <span class="menu-title">Sample Pages</span>
                             <i class="menu-arrow"></i>
                             <i class="mdi mdi-medical-bag menu-icon"></i>
@@ -305,90 +339,102 @@
     <script src="{{ asset('backend/js/todolist.js') }}"></script>
     @include('sweetalert::alert')
     <!-- End custom js for this page -->
-    {{-- swal js cdn--}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {{-- swal js cdn --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+        integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
+        {{-- delete confirm functon start --}}
 
-    {{-- delete confirm functon start--}}
+        function confirmDelete(deleteRoute, redirectRoute) {
+            swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover this data!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        window.location.href = deleteRoute;
+                    }
+                    // else {
+                    // swal("Your data is safe!");
+                    // }
+                });
+        }
 
-    function confirmDelete(deleteRoute, redirectRoute){
-    swal({
-    title: "Are you sure?",
-    text: "Once deleted, you will not be able to recover this data!",
-    icon: "warning",
-    buttons: true,
-    dangerMode: true,
-    })
-    .then((willDelete) => {
-    if (willDelete) {
-    window.location.href=deleteRoute;
-    }
-    // else {
-    // swal("Your data is safe!");
-    // }
-    });
-    }
-
-    {{-- delete confirm functon end--}}
+        {{-- delete confirm functon end --}}
 
 
-    {{-- file validation start--}}
+        {{-- file validation start --}}
 
-    function fileValidation(fileRequred,imageSize=null,videoSize=null,pdfSize=null){
+        function fileValidation(fileRequred, imageSize = null, videoSize = null, pdfSize = null) {
 
-    if($(event.target).next().attr('class')!=undefined && $(event.target).next().attr('class').includes('fileerror')){
-    $(event.target).next().remove()
-    }
-    let files=event.target.files;
+            if ($(event.target).next().attr('class') != undefined && $(event.target).next().attr('class').includes(
+                    'fileerror')) {
+                $(event.target).next().remove()
+            }
+            let files = event.target.files;
 
-    let error=false;
-    let errorMessage='';
-    if(fileRequred && files.length<=0){ error=true; errorMessage='File Required' ; } for(let i=0;i<files.length;i++){ let size=files[i].size/1024/1024; //in MB let type=files[i].type.includes('image')?'image':(files[i].type.includes('video')||files[i].type.includes('ogg'))?'video':files[i].type.includes('pdf')?'pdf':''; debugger; if(type=='image' ){ if(imageSize==null){ error=true; errorMessage='Invalid File Type' ; break; } if(imageSize!=null && size>imageSize){
-        error=true;
-        errorMessage='Image Size must be less or equal to '+imageSize+ 'MB';
-        break;
+            let error = false;
+            let errorMessage = '';
+            if (fileRequred && files.length <= 0) {
+                error = true;
+                errorMessage = 'File Required';
+            }
+            for (let i = 0; i < files.length; i++) {
+                let size = files[i].size / 1024 /
+                    1024; //in MB let type=files[i].type.includes('image')?'image':(files[i].type.includes('video')||files[i].type.includes('ogg'))?'video':files[i].type.includes('pdf')?'pdf':''; debugger; if(type=='image' ){ if(imageSize==null){ error=true; errorMessage='Invalid File Type' ; break; } if(imageSize!=null && size>imageSize){
+                error = true;
+                errorMessage = 'Image Size must be less or equal to ' + imageSize + 'MB';
+                break;
+            }
+        }
+        if (type == 'video') {
+            if (videoSize == null) {
+                error = true;
+                errorMessage = 'Invalid File Type';
+                break;
+            }
+            if (videoSize != null && size > videoSize) {
+                error = true;
+                errorMessage = 'Image Size must be less or equal to ' + videoSize + 'MB';
+                break;
+            }
+        }
+        if (type == 'pdf') {
+            if (pdfSize == null) {
+                error = true;
+                errorMessage = 'Invalid File Type';
+                break;
+            }
+            if (pdfSize != null && size > pdfSize) {
+                error = true;
+                errorMessage = 'Image Size must be less or equal to ' + pdfSize + 'MB';
+                break;
+            }
+        }
+        if (type == '') {
+            error = true;
+            errorMessage = 'Invalid File Type';
+            break;
         }
         }
-        if(type=='video'){
-        if(videoSize==null){
-        error=true;
-        errorMessage='Invalid File Type';
-        break;
-        }
-        if(videoSize!=null && size>videoSize){
-        error=true;
-        errorMessage='Image Size must be less or equal to '+videoSize+ 'MB';
-        break;
-        }
-        }
-        if(type=='pdf' ){
-        if(pdfSize==null){
-        error=true;
-        errorMessage='Invalid File Type';
-        break;
-        }
-        if(pdfSize!=null && size>pdfSize){
-        error=true;
-        errorMessage='Image Size must be less or equal to '+pdfSize+ 'MB';
-        break;
-        }
-        }
-        if(type==''){
-        error=true;
-        errorMessage='Invalid File Type';
-        break;
-        }
-        }
-        if(error){
-        $(`<p class="fileerror text-danger">${errorMessage}</p>`).insertAfter($(event.target))
-        $(event.target).wrap('<form>').closest(
-            'form').get(0).reset();
+        if (error) {
+            $(`<p class="fileerror text-danger">${errorMessage}</p>`).insertAfter($(event.target))
+            $(event.target).wrap('<form>').closest(
+                'form').get(0).reset();
             $(event.target).unwrap();
-            }
+        }
 
-            }
-            {{-- file validation end--}}
+        }
+        {{-- file validation end --}}
     </script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
+
+    @stack('scripts')
+
 </body>
 
 </html>
