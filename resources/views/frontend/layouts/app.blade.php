@@ -110,14 +110,28 @@
             <div class="collapse navbar-nav navbar-collapse justify-content-between px-3" id="navbarCollapse">
                 <div class="navbar-nav ml-auto py-0">
                     <a href="index.html" class="nav-item nav-link active">Home</a>
+                    @foreach($pages as $page)
+                    @if($page->is_nav_page && $page->parentPage == null)
                     <div class="nav-item dropdown">
+                        <a href="#" class="nav-link {{count($page->childPages) > 0 ? 'dropdown-toggle':''}}" data-toggle="dropdown">{{$page->title}}</a>
+                        @if(count($page->childPages) > 0)
+                        <div class="dropdown-menu rounded-0 m-0">
+                            @foreach($page->childPages as $childPage)
+                            <a href="blog.html" class="dropdown-item">{{$childPage->title}}</a>
+                            @endforeach
+                        </div>
+                        @endif
+                    </div>
+                    @endif
+                    @endforeach
+                    <!-- <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">About</a>
                         <div class="dropdown-menu rounded-0 m-0">
                             <a href="blog.html" class="dropdown-item">Blog Grid</a>
                             <a href="single.html" class="dropdown-item">Blog Detail</a>
                         </div>
-                    </div>
-                    <div class="nav-item dropdown">
+                    </div> -->
+                    <!-- <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Projects</a>
                         <div class="dropdown-menu rounded-0 m-0">
                             <a href="blog.html" class="dropdown-item">Blog Grid</a>
@@ -139,7 +153,7 @@
                         </div>
                     </div>
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
-                    <a href="contact.html" class="nav-item nav-link">Donate</a>
+                    <a href="contact.html" class="nav-item nav-link">Donate</a> -->
                 </div>
             </div>
         </nav>

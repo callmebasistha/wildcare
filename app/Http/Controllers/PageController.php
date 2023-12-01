@@ -36,6 +36,7 @@ class PageController extends Controller
         try {
             DB::transaction(function () use ($data) {
                 $data['slug'] = Str::slug($data['title'], '-');
+                $data['is_nav_page'] = $data['is_nav_page'] ==  "on" ? true : false;
                 $page = Page::create($data);
                 if (array_key_exists('sections', $data)) {
                     foreach ($data['sections'] as $section) {

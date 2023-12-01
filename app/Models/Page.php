@@ -13,12 +13,17 @@ class Page extends Model
         'title',
         'slug',
         'page_id',
-        'status'
+        'status',
+        'is_nav_page'
     ];
 
 
     public function parentPage()
     {
         return $this->belongsTo(Page::class, 'page_id');
+    }
+    public function childPages()
+    {
+        return $this->hasMany(Page::class);
     }
 }
