@@ -26,4 +26,8 @@ class Page extends Model
     {
         return $this->hasMany(Page::class);
     }
+    public function sections()
+    {
+        return $this->belongsToMany(Section::class)->with('media');
+    }
 }

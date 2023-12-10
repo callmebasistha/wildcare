@@ -14,4 +14,15 @@ class FrontendController extends Controller
         $pages = Page::with('parentPage', 'childPages')->get();
         return view('frontend.pages.landing', compact("sliders", "pages"));
     }
+
+
+    public function pageDetail($slug)
+    {
+        $page = Page::where('slug', $slug)->with('sections', 'sections.childSections')->first();
+        if ($page) {
+            dd($page);
+        } else {
+            abort(404);
+        }
+    }
 }

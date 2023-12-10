@@ -25,4 +25,9 @@ class Section extends Model implements HasMedia
     {
         return $this->belongsTo(Section::class, 'section_id');
     }
+
+    public function childSections()
+    {
+        return $this->hasMany(Section::class)->with('childSections', 'media');
+    }
 }

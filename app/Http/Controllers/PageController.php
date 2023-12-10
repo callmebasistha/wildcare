@@ -18,6 +18,16 @@ class PageController extends Controller
         return view('backend.pages.page.index', compact('pages'));
     }
 
+    public function pageDetail($slug)
+    {
+        $page = Page::where('slug')->first();
+        if ($page) {
+            dd($page);
+        } else {
+            abort(404);
+        }
+    }
+
 
     public function createForm()
     {
