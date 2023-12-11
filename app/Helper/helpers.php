@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Page;
 use Illuminate\Support\Facades\DB;
 
 function getExtension($file)
@@ -18,4 +19,8 @@ function getLatestHierarchy($sectionId, $pageId)
     } else {
         return 1;
     }
+}
+function pages()
+{
+    return Page::where('slug', '!=', 'home')->with('parentPage', 'childPages')->get();
 }

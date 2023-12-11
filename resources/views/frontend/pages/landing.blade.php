@@ -21,9 +21,9 @@
                                 <h3 class="text-white mb-3 d-none d-sm-block">{{ $slider->title }}</h3>
                                 <h1 class="display-3 text-white mb-3">{{ $slider->sub_title }}</h1>
                                 <!-- <h5 class="text-white mb-3 d-none d-sm-block">Duo nonumy et dolor tempor no et. Diam sit
-                                                                                                                                                                                        diam sit diam erat</h5> -->
+                                                                                                                                                                                                                    diam sit diam erat</h5> -->
                                 <!-- <a href="" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Book Now</a>
-                                                                                                                                                                                    <a href="" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Learn More</a> -->
+                                                                                                                                                                                                                <a href="" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Learn More</a> -->
                             </div>
                         </div>
                     </div>
@@ -152,472 +152,72 @@
     <!-- About Start -->
     <div class="container py-5">
         @foreach ($landingPageData['sections'] as $section)
-            <div class="row py-5">
-                <div class="{{ $section->hasMedia('file') ? 'col-lg-7' : 'col-lg-12' }} pb-5 pb-lg-0 px-3 px-lg-5">
-                    <h1 class="display-4 mb-4"><span class="text-primary">{{ $section['title'] }}</span></h1>
-                    <h4 class="text-secondary mb-3">{{ $section['sub_title'] }}</h4>
-                    <h5 class="text-muted mb-3">{{ Str::limit($section['short_description'], 70, '...') }}</h5>
-                    <p class="mb-4">{!! Str::limit($section['detailed_description'], 800, '...') !!}</p>
-                    <a href="" class="btn btn-lg btn-primary mt-3 px-4">View More</a>
-                </div>
-                @if ($section->hasMedia('file'))
-                    <div class="col-lg-5">
-                        <div class="row px-3">
-                            <div class="col-12 p-0">
-                                @if (str_contains($section->getMedia('file')[0]->mime_type, 'image'))
-                                    <img class="img-fluid " src="{{ $section->getMedia('file')[0]->getFullUrl() }}"
-                                        alt="">
-                                @else
-                                    <video width="100" height="100" controls>
-                                        <source src="{{ $section->getMedia('file')[0]->getFullUrl() }}" type="video/mp4">
-                                        {{-- <source src="movie.ogg" type="video/ogg"> --}}
-                                        Your browser does not support the video tag.
-                                    </video>
-                                @endif
+            @if ($loop->odd)
+                <div class="row py-5">
+                    <div class="{{ $section->hasMedia('file') ? 'col-lg-7' : 'col-lg-12' }} pb-5 pb-lg-0 px-3 px-lg-5">
+                        <h1 class="display-4 mb-4"><span class="text-primary">{{ $section['title'] }}</span></h1>
+                        <h4 class="text-secondary mb-3">{{ $section['sub_title'] }}</h4>
+                        <h5 class="text-muted mb-3">{{ Str::limit($section['short_description'], 70, '...') }}</h5>
+                        <p class="mb-4">{!! Str::limit($section['detailed_description'], 800, '...') !!}</p>
+                        <a href="{{ route('sectionDetail', $section['slug']) }}"
+                            class="btn btn-lg btn-primary mt-3 px-4">View
+                            More</a>
+                    </div>
+                    @if ($section->hasMedia('file'))
+                        <div class="col-lg-5">
+                            <div class="row px-3">
+                                <div class="col-12 p-0">
+                                    @if (str_contains($section->getMedia('file')[0]->mime_type, 'image'))
+                                        <img class="img-fluid " src="{{ $section->getMedia('file')[0]->getFullUrl() }}"
+                                            alt="">
+                                    @else
+                                        <video width="100" height="100" controls>
+                                            <source src="{{ $section->getMedia('file')[0]->getFullUrl() }}"
+                                                type="video/mp4">
+                                            {{-- <source src="movie.ogg" type="video/ogg"> --}}
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    @endif
+                                </div>
                             </div>
                         </div>
+                    @endif
+                </div>
+            @elseif ($loop->even)
+                <div class="row py-5">
+                    @if ($section->hasMedia('file'))
+                        <div class="col-lg-5">
+                            <div class="row px-3">
+                                <div class="col-12 p-0">
+                                    @if (str_contains($section->getMedia('file')[0]->mime_type, 'image'))
+                                        <img class="img-fluid " src="{{ $section->getMedia('file')[0]->getFullUrl() }}"
+                                            alt="">
+                                    @else
+                                        <video width="100" height="100" controls>
+                                            <source src="{{ $section->getMedia('file')[0]->getFullUrl() }}"
+                                                type="video/mp4">
+                                            {{-- <source src="movie.ogg" type="video/ogg"> --}}
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                    <div class="{{ $section->hasMedia('file') ? 'col-lg-7' : 'col-lg-12' }} pb-5 pb-lg-0 px-3 px-lg-5">
+                        <h1 class="display-4 mb-4"><span class="text-primary">{{ $section['title'] }}</span></h1>
+                        <h4 class="text-secondary mb-3">{{ $section['sub_title'] }}</h4>
+                        <h5 class="text-muted mb-3">{{ Str::limit($section['short_description'], 70, '...') }}</h5>
+                        <p class="mb-4">{!! Str::limit($section['detailed_description'], 800, '...') !!}</p>
+                        <a href="{{ route('sectionDetail', $section['slug']) }}"
+                            class="btn btn-lg btn-primary mt-3 px-4">View
+                            More</a>
                     </div>
-                @endif
-            </div>
+
+                </div>
+            @endif
         @endforeach
 
     </div>
     <!-- About End -->
-
-
-    <!-- Services Start -->
-    <div class="container-fluid bg-light pt-5">
-        <div class="container py-5">
-            <div class="d-flex flex-column text-center mb-5">
-                <h4 class="text-secondary mb-3">Our Services</h4>
-                <h1 class="display-4 m-0"><span class="text-primary">Premium</span> Pet Services</h1>
-            </div>
-            <div class="row pb-3">
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
-                        <h3 class="flaticon-house display-3 font-weight-normal text-secondary mb-3"></h3>
-                        <h3 class="mb-3">Pet Boarding</h3>
-                        <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet, diam sea est magna diam eos,
-                            rebum sit vero stet ipsum justo</p>
-                        <a class="text-uppercase font-weight-bold" href="">Read More</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
-                        <h3 class="flaticon-food display-3 font-weight-normal text-secondary mb-3"></h3>
-                        <h3 class="mb-3">Pet Feeding</h3>
-                        <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet, diam sea est magna diam eos,
-                            rebum sit vero stet ipsum justo</p>
-                        <a class="text-uppercase font-weight-bold" href="">Read More</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
-                        <h3 class="flaticon-grooming display-3 font-weight-normal text-secondary mb-3"></h3>
-                        <h3 class="mb-3">Pet Grooming</h3>
-                        <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet, diam sea est magna diam eos,
-                            rebum sit vero stet ipsum justo</p>
-                        <a class="text-uppercase font-weight-bold" href="">Read More</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
-                        <h3 class="flaticon-cat display-3 font-weight-normal text-secondary mb-3"></h3>
-                        <h3 class="mb-3">Per Training</h3>
-                        <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet, diam sea est magna diam eos,
-                            rebum sit vero stet ipsum justo</p>
-                        <a class="text-uppercase font-weight-bold" href="">Read More</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
-                        <h3 class="flaticon-dog display-3 font-weight-normal text-secondary mb-3"></h3>
-                        <h3 class="mb-3">Pet Exercise</h3>
-                        <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet, diam sea est magna diam eos,
-                            rebum sit vero stet ipsum justo</p>
-                        <a class="text-uppercase font-weight-bold" href="">Read More</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
-                        <h3 class="flaticon-vaccine display-3 font-weight-normal text-secondary mb-3"></h3>
-                        <h3 class="mb-3">Pet Treatment</h3>
-                        <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet, diam sea est magna diam eos,
-                            rebum sit vero stet ipsum justo</p>
-                        <a class="text-uppercase font-weight-bold" href="">Read More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Services End -->
-
-
-    <!-- Features Start -->
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-5">
-                <img class="img-fluid w-100" src="{{ asset('frontend/img/feature.jpg') }}" alt="">
-            </div>
-            <div class="col-lg-7 py-5 py-lg-0 px-3 px-lg-5">
-                <h4 class="text-secondary mb-3">Why Choose Us?</h4>
-                <h1 class="display-4 mb-4"><span class="text-primary">Special Care</span> On Pets</h1>
-                <p class="mb-4">Dolor lorem lorem ipsum sit et ipsum. Sadip sea amet diam sed ut vero no sit. Et
-                    elitr stet sed sit sed kasd. Erat duo eos et erat sed diam duo</p>
-                <div class="row py-2">
-                    <div class="col-6">
-                        <div class="d-flex align-items-center mb-4">
-                            <h1 class="flaticon-cat font-weight-normal text-secondary m-0 mr-3"></h1>
-                            <h5 class="text-truncate m-0">Best In Industry</h5>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="d-flex align-items-center mb-4">
-                            <h1 class="flaticon-doctor font-weight-normal text-secondary m-0 mr-3"></h1>
-                            <h5 class="text-truncate m-0">Emergency Services</h5>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="d-flex align-items-center">
-                            <h1 class="flaticon-care font-weight-normal text-secondary m-0 mr-3"></h1>
-                            <h5 class="text-truncate m-0">Special Care</h5>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="d-flex align-items-center">
-                            <h1 class="flaticon-dog font-weight-normal text-secondary m-0 mr-3"></h1>
-                            <h5 class="text-truncate m-0">Customer Support</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Features End -->
-
-
-    <!-- Pricing Plan Start -->
-    <div class="container-fluid bg-light pt-5 pb-4">
-        <div class="container py-5">
-            <div class="d-flex flex-column text-center mb-5">
-                <h4 class="text-secondary mb-3">Pricing Plan</h4>
-                <h1 class="display-4 m-0">Choose the <span class="text-primary">Best Price</span></h1>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 mb-4">
-                    <div class="card border-0">
-                        <div class="card-header position-relative border-0 p-0 mb-4">
-                            <img class="card-img-top" src="{{ asset('frontend/img/price-1.jpg') }}" alt="">
-                            <div class="position-absolute d-flex flex-column align-items-center justify-content-center w-100 h-100"
-                                style="top: 0; left: 0; z-index: 1; background: rgba(0, 0, 0, .5);">
-                                <h3 class="text-primary mb-3">Basic</h3>
-                                <h1 class="display-4 text-white mb-0">
-                                    <small class="align-top" style="font-size: 22px; line-height: 45px;">$</small>49<small
-                                        class="align-bottom" style="font-size: 16px; line-height: 40px;">/ Mo</small>
-                                </h1>
-                            </div>
-                        </div>
-                        <div class="card-body text-center p-0">
-                            <ul class="list-group list-group-flush mb-4">
-                                <li class="list-group-item p-2"><i class="fa fa-check text-secondary mr-2"></i>Feeding
-                                </li>
-                                <li class="list-group-item p-2"><i class="fa fa-check text-secondary mr-2"></i>Boarding
-                                </li>
-                                <li class="list-group-item p-2"><i class="fa fa-times text-danger mr-2"></i>Spa &
-                                    Grooming</li>
-                                <li class="list-group-item p-2"><i class="fa fa-times text-danger mr-2"></i>Veterinary
-                                    Medicine</li>
-                            </ul>
-                        </div>
-                        <div class="card-footer border-0 p-0">
-                            <a href="" class="btn btn-primary btn-block p-3" style="border-radius: 0;">Signup
-                                Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-4">
-                    <div class="card border-0">
-                        <div class="card-header position-relative border-0 p-0 mb-4">
-                            <img class="card-img-top" src="{{ asset('frontend/img/price-2.jpg') }}" alt="">
-                            <div class="position-absolute d-flex flex-column align-items-center justify-content-center w-100 h-100"
-                                style="top: 0; left: 0; z-index: 1; background: rgba(0, 0, 0, .5);">
-                                <h3 class="text-secondary mb-3">Standard</h3>
-                                <h1 class="display-4 text-white mb-0">
-                                    <small class="align-top" style="font-size: 22px; line-height: 45px;">$</small>99<small
-                                        class="align-bottom" style="font-size: 16px; line-height: 40px;">/ Mo</small>
-                                </h1>
-                            </div>
-                        </div>
-                        <div class="card-body text-center p-0">
-                            <ul class="list-group list-group-flush mb-4">
-                                <li class="list-group-item p-2"><i class="fa fa-check text-secondary mr-2"></i>Feeding
-                                </li>
-                                <li class="list-group-item p-2"><i class="fa fa-check text-secondary mr-2"></i>Boarding
-                                </li>
-                                <li class="list-group-item p-2"><i class="fa fa-check text-secondary mr-2"></i>Spa &
-                                    Grooming</li>
-                                <li class="list-group-item p-2"><i class="fa fa-times text-danger mr-2"></i>Veterinary
-                                    Medicine</li>
-                            </ul>
-                        </div>
-                        <div class="card-footer border-0 p-0">
-                            <a href="" class="btn btn-secondary btn-block p-3" style="border-radius: 0;">Signup
-                                Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-4">
-                    <div class="card border-0">
-                        <div class="card-header position-relative border-0 p-0 mb-4">
-                            <img class="card-img-top" src="{{ asset('frontend/img/price-3.jpg') }}" alt="">
-                            <div class="position-absolute d-flex flex-column align-items-center justify-content-center w-100 h-100"
-                                style="top: 0; left: 0; z-index: 1; background: rgba(0, 0, 0, .5);">
-                                <h3 class="text-primary mb-3">Premium</h3>
-                                <h1 class="display-4 text-white mb-0">
-                                    <small class="align-top"
-                                        style="font-size: 22px; line-height: 45px;">$</small>149<small
-                                        class="align-bottom" style="font-size: 16px; line-height: 40px;">/ Mo</small>
-                                </h1>
-                            </div>
-                        </div>
-                        <div class="card-body text-center p-0">
-                            <ul class="list-group list-group-flush mb-4">
-                                <li class="list-group-item p-2"><i class="fa fa-check text-secondary mr-2"></i>Feeding
-                                </li>
-                                <li class="list-group-item p-2"><i class="fa fa-check text-secondary mr-2"></i>Boarding
-                                </li>
-                                <li class="list-group-item p-2"><i class="fa fa-check text-secondary mr-2"></i>Spa &
-                                    Grooming</li>
-                                <li class="list-group-item p-2"><i class="fa fa-check text-secondary mr-2"></i>Veterinary
-                                    Medicine</li>
-                            </ul>
-                        </div>
-                        <div class="card-footer border-0 p-0">
-                            <a href="" class="btn btn-primary btn-block p-3" style="border-radius: 0;">Signup
-                                Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Pricing Plan End -->
-
-
-    <!-- Team Start -->
-    <div class="container mt-5 pt-5 pb-3">
-        <div class="d-flex flex-column text-center mb-5">
-            <h4 class="text-secondary mb-3">Team Member</h4>
-            <h1 class="display-4 m-0">Meet Our <span class="text-primary">Team Member</span></h1>
-        </div>
-        <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <div class="team card position-relative overflow-hidden border-0 mb-4">
-                    <img class="card-img-top" src="{{ asset('frontend/img/team-1.jpg') }}" alt="">
-                    <div class="card-body text-center p-0">
-                        <div class="team-text d-flex flex-column justify-content-center bg-light">
-                            <h5>Mollie Ross</h5>
-                            <i>Founder & CEO</i>
-                        </div>
-                        <div class="team-social d-flex align-items-center justify-content-center bg-dark">
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
-                                style="width: 36px; height: 36px;" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
-                                style="width: 36px; height: 36px;" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
-                                style="width: 36px; height: 36px;" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center px-0"
-                                style="width: 36px; height: 36px;" href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="team card position-relative overflow-hidden border-0 mb-4">
-                    <img class="card-img-top" src="{{ asset('frontend/img/team-2.jpg') }}" alt="">
-                    <div class="card-body text-center p-0">
-                        <div class="team-text d-flex flex-column justify-content-center bg-light">
-                            <h5>Jennifer Page</h5>
-                            <i>Chef Executive</i>
-                        </div>
-                        <div class="team-social d-flex align-items-center justify-content-center bg-dark">
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
-                                style="width: 36px; height: 36px;" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
-                                style="width: 36px; height: 36px;" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
-                                style="width: 36px; height: 36px;" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center px-0"
-                                style="width: 36px; height: 36px;" href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="team card position-relative overflow-hidden border-0 mb-4">
-                    <img class="card-img-top" src="{{ asset('frontend/img/team-3.jpg') }}" alt="">
-                    <div class="card-body text-center p-0">
-                        <div class="team-text d-flex flex-column justify-content-center bg-light">
-                            <h5>Kate Glover</h5>
-                            <i>Doctor</i>
-                        </div>
-                        <div class="team-social d-flex align-items-center justify-content-center bg-dark">
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
-                                style="width: 36px; height: 36px;" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
-                                style="width: 36px; height: 36px;" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
-                                style="width: 36px; height: 36px;" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center px-0"
-                                style="width: 36px; height: 36px;" href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="team card position-relative overflow-hidden border-0 mb-4">
-                    <img class="card-img-top" src="{{ asset('frontend/img/team-4.jpg') }}" alt="">
-                    <div class="card-body text-center p-0">
-                        <div class="team-text d-flex flex-column justify-content-center bg-light">
-                            <h5>Lilly Fry</h5>
-                            <i>Trainer</i>
-                        </div>
-                        <div class="team-social d-flex align-items-center justify-content-center bg-dark">
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
-                                style="width: 36px; height: 36px;" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
-                                style="width: 36px; height: 36px;" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
-                                style="width: 36px; height: 36px;" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center px-0"
-                                style="width: 36px; height: 36px;" href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Team End -->
-
-
-    <!-- Testimonial Start -->
-    <div class="container-fluid bg-light my-5 p-0 py-5">
-        <div class="container p-0 py-5">
-            <div class="d-flex flex-column text-center mb-5">
-                <h4 class="text-secondary mb-3">Testimonial</h4>
-                <h1 class="display-4 m-0">Our Client <span class="text-primary">Says</span></h1>
-            </div>
-            <div class="owl-carousel testimonial-carousel">
-                <div class="bg-white mx-3 p-4">
-                    <div class="d-flex align-items-end mb-3 mt-n4 ml-n4">
-                        <img class="img-fluid" src="{{ asset('frontend/img/testimonial-1.jpg') }}"
-                            style="width: 80px; height: 80px;" alt="">
-                        <div class="ml-3">
-                            <h5>Client Name</h5>
-                            <i>Profession</i>
-                        </div>
-                    </div>
-                    <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita
-                        lorem. Dolor tempor ipsum sanct clita</p>
-                </div>
-                <div class="bg-white mx-3 p-4">
-                    <div class="d-flex align-items-end mb-3 mt-n4 ml-n4">
-                        <img class="img-fluid" src="{{ asset('frontend/img/testimonial-2.jpg') }}"
-                            style="width: 80px; height: 80px;" alt="">
-                        <div class="ml-3">
-                            <h5>Client Name</h5>
-                            <i>Profession</i>
-                        </div>
-                    </div>
-                    <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita
-                        lorem. Dolor tempor ipsum sanct clita</p>
-                </div>
-                <div class="bg-white mx-3 p-4">
-                    <div class="d-flex align-items-end mb-3 mt-n4 ml-n4">
-                        <img class="img-fluid" src="{{ asset('frontend/img/testimonial-3.jpg') }}"
-                            style="width: 80px; height: 80px;" alt="">
-                        <div class="ml-3">
-                            <h5>Client Name</h5>
-                            <i>Profession</i>
-                        </div>
-                    </div>
-                    <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita
-                        lorem. Dolor tempor ipsum sanct clita</p>
-                </div>
-                <div class="bg-white mx-3 p-4">
-                    <div class="d-flex align-items-end mb-3 mt-n4 ml-n4">
-                        <img class="img-fluid" src="{{ asset('frontend/img/testimonial-4.jpg') }}"
-                            style="width: 80px; height: 80px;" alt="">
-                        <div class="ml-3">
-                            <h5>Client Name</h5>
-                            <i>Profession</i>
-                        </div>
-                    </div>
-                    <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita
-                        lorem. Dolor tempor ipsum sanct clita</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Testimonial End -->
-
-
-    <!-- Blog Start -->
-    <div class="container pt-5">
-        <div class="d-flex flex-column text-center mb-5">
-            <h4 class="text-secondary mb-3">Pet Blog</h4>
-            <h1 class="display-4 m-0"><span class="text-primary">Updates</span> From Blog</h1>
-        </div>
-        <div class="row pb-3">
-            <div class="col-lg-4 mb-4">
-                <div class="card border-0 mb-2">
-                    <img class="card-img-top" src="{{ asset('frontend/img/blog-1.jpg') }}" alt="">
-                    <div class="card-body bg-light p-4">
-                        <h4 class="card-title text-truncate">Diam amet eos at no eos</h4>
-                        <div class="d-flex mb-3">
-                            <small class="mr-2"><i class="fa fa-user text-muted"></i> Admin</small>
-                            <small class="mr-2"><i class="fa fa-folder text-muted"></i> Web Design</small>
-                            <small class="mr-2"><i class="fa fa-comments text-muted"></i> 15</small>
-                        </div>
-                        <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet, diam sea est diam eos, rebum
-                            sit vero stet justo</p>
-                        <a class="font-weight-bold" href="">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 mb-4">
-                <div class="card border-0 mb-2">
-                    <img class="card-img-top" src="{{ asset('frontend/img/blog-2.jpg') }}" alt="">
-                    <div class="card-body bg-light p-4">
-                        <h4 class="card-title text-truncate">Diam amet eos at no eos</h4>
-                        <div class="d-flex mb-3">
-                            <small class="mr-2"><i class="fa fa-user text-muted"></i> Admin</small>
-                            <small class="mr-2"><i class="fa fa-folder text-muted"></i> Web Design</small>
-                            <small class="mr-2"><i class="fa fa-comments text-muted"></i> 15</small>
-                        </div>
-                        <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet, diam sea est diam eos, rebum
-                            sit vero stet justo</p>
-                        <a class="font-weight-bold" href="">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 mb-4">
-                <div class="card border-0 mb-2">
-                    <img class="card-img-top" src="{{ asset('frontend/img/blog-3.jpg') }}" alt="">
-                    <div class="card-body bg-light p-4">
-                        <h4 class="card-title text-truncate">Diam amet eos at no eos</h4>
-                        <div class="d-flex mb-3">
-                            <small class="mr-2"><i class="fa fa-user text-muted"></i> Admin</small>
-                            <small class="mr-2"><i class="fa fa-folder text-muted"></i> Web Design</small>
-                            <small class="mr-2"><i class="fa fa-comments text-muted"></i> 15</small>
-                        </div>
-                        <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet, diam sea est diam eos, rebum
-                            sit vero stet justo</p>
-                        <a class="font-weight-bold" href="">Read More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Blog End -->
 @endsection
