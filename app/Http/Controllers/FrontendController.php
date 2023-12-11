@@ -12,7 +12,8 @@ class FrontendController extends Controller
     {
         $sliders = Slider::with('media')->get();
         $pages = Page::with('parentPage', 'childPages')->get();
-        return view('frontend.pages.landing', compact("sliders", "pages"));
+        $landingPageData = Page::where('slug', 'home')->with('sections', 'sections.childSections')->first();
+        return view('frontend.pages.landing', compact("sliders", "pages", "landingPageData"));
     }
 
 

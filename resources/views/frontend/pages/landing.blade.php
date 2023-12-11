@@ -21,9 +21,9 @@
                                 <h3 class="text-white mb-3 d-none d-sm-block">{{ $slider->title }}</h3>
                                 <h1 class="display-3 text-white mb-3">{{ $slider->sub_title }}</h1>
                                 <!-- <h5 class="text-white mb-3 d-none d-sm-block">Duo nonumy et dolor tempor no et. Diam sit
-                                                                        diam sit diam erat</h5> -->
+                                                                                                                                                                                        diam sit diam erat</h5> -->
                                 <!-- <a href="" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Book Now</a>
-                                                                    <a href="" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Learn More</a> -->
+                                                                                                                                                                                    <a href="" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Learn More</a> -->
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
 
 
     <!-- Booking Start -->
-    <div class="container-fluid bg-light">
+    {{-- <div class="container-fluid bg-light">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-5">
@@ -145,49 +145,42 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Booking Start -->
 
 
     <!-- About Start -->
     <div class="container py-5">
-        <div class="row py-5">
-            <div class="col-lg-7 pb-5 pb-lg-0 px-3 px-lg-5">
-                <h4 class="text-secondary mb-3">About Us</h4>
-                <h1 class="display-4 mb-4"><span class="text-primary">Boarding</span> & <span
-                        class="text-secondary">Daycare</span></h1>
-                <h5 class="text-muted mb-3">Amet stet amet ut. Sit no vero vero no dolor. Sed erat ut sea. Just clita
-                    ut stet kasd at diam sit erat vero sit.</h5>
-                <p class="mb-4">Dolores lorem lorem ipsum sit et ipsum. Sadip sea amet diam dolore sed et. Sit rebum
-                    labore sit sit ut vero no sit. Et elitr stet dolor sed sit et sed ipsum et kasd ut. Erat duo eos et
-                    erat sed diam duo</p>
-                <ul class="list-inline">
-                    <li>
-                        <h5><i class="fa fa-check-double text-secondary mr-3"></i>Best In Industry</h5>
-                    </li>
-                    <li>
-                        <h5><i class="fa fa-check-double text-secondary mr-3"></i>Emergency Services</h5>
-                    </li>
-                    <li>
-                        <h5><i class="fa fa-check-double text-secondary mr-3"></i>24/7 Customer Support</h5>
-                    </li>
-                </ul>
-                <a href="" class="btn btn-lg btn-primary mt-3 px-4">Learn More</a>
-            </div>
-            <div class="col-lg-5">
-                <div class="row px-3">
-                    <div class="col-12 p-0">
-                        <img class="img-fluid w-100" src="{{ asset('frontend/img/about-1.jpg') }}" alt="">
-                    </div>
-                    <div class="col-6 p-0">
-                        <img class="img-fluid w-100" src="{{ asset('frontend/img/about-2.jpg') }}" alt="">
-                    </div>
-                    <div class="col-6 p-0">
-                        <img class="img-fluid w-100" src="{{ asset('frontend/img/about-3.jpg') }}" alt="">
-                    </div>
+        @foreach ($landingPageData['sections'] as $section)
+            <div class="row py-5">
+                <div class="{{ $section->hasMedia('file') ? 'col-lg-7' : 'col-lg-12' }} pb-5 pb-lg-0 px-3 px-lg-5">
+                    <h1 class="display-4 mb-4"><span class="text-primary">{{ $section['title'] }}</span></h1>
+                    <h4 class="text-secondary mb-3">{{ $section['sub_title'] }}</h4>
+                    <h5 class="text-muted mb-3">{{ Str::limit($section['short_description'], 70, '...') }}</h5>
+                    <p class="mb-4">{!! Str::limit($section['detailed_description'], 800, '...') !!}</p>
+                    <a href="" class="btn btn-lg btn-primary mt-3 px-4">View More</a>
                 </div>
+                @if ($section->hasMedia('file'))
+                    <div class="col-lg-5">
+                        <div class="row px-3">
+                            <div class="col-12 p-0">
+                                @if (str_contains($section->getMedia('file')[0]->mime_type, 'image'))
+                                    <img class="img-fluid " src="{{ $section->getMedia('file')[0]->getFullUrl() }}"
+                                        alt="">
+                                @else
+                                    <video width="100" height="100" controls>
+                                        <source src="{{ $section->getMedia('file')[0]->getFullUrl() }}" type="video/mp4">
+                                        {{-- <source src="movie.ogg" type="video/ogg"> --}}
+                                        Your browser does not support the video tag.
+                                    </video>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                @endif
             </div>
-        </div>
+        @endforeach
+
     </div>
     <!-- About End -->
 
