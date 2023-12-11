@@ -4402,6 +4402,12 @@ input[type="button"].btn-block {
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 1rem;
+  transition: all ease 0.4s;
+}
+
+.animate {
+  padding: 0px 10px 0px 0px;
+  transition: all ease 0.4s;
 }
 
 .navbar .container,
@@ -10119,6 +10125,7 @@ a.text-dark:focus {
   .navbar {
     display: none;
   }
+
   .badge {
     border: 1px solid #000;
   }

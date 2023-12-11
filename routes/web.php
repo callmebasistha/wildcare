@@ -51,5 +51,12 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/delete/{id}', [SectionController::class, 'destroy'])->name('destroy');
             // Route::post('/update/{id}', [PageController::class, 'update'])->name('update');
         });
+        Route::group(['prefix' => 'gallery', 'as' => 'gallery.'], function () {
+            Route::get('/', [SectionController::class, 'index'])->name('index');
+            Route::get('/create-page', [SectionController::class, 'createForm'])->name('createForm');
+            Route::post('/', [SectionController::class, 'store'])->name('store');
+            Route::get('/delete/{id}', [SectionController::class, 'destroy'])->name('destroy');
+            // Route::post('/update/{id}', [PageController::class, 'update'])->name('update');
+        });
     });
 });
