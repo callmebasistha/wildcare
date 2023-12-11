@@ -21,9 +21,9 @@
                                 <h3 class="text-white mb-3 d-none d-sm-block">{{ $slider->title }}</h3>
                                 <h1 class="display-3 text-white mb-3">{{ $slider->sub_title }}</h1>
                                 <!-- <h5 class="text-white mb-3 d-none d-sm-block">Duo nonumy et dolor tempor no et. Diam sit
-                                                                                                                                                                                                                    diam sit diam erat</h5> -->
+                                                                                                                                                                                                                                    diam sit diam erat</h5> -->
                                 <!-- <a href="" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Book Now</a>
-                                                                                                                                                                                                                <a href="" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Learn More</a> -->
+                                                                                                                                                                                                                                <a href="" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Learn More</a> -->
                             </div>
                         </div>
                     </div>
@@ -150,74 +150,76 @@
 
 
     <!-- About Start -->
-    <div class="container py-5">
-        @foreach ($landingPageData['sections'] as $section)
-            @if ($loop->odd)
-                <div class="row py-5">
-                    <div class="{{ $section->hasMedia('file') ? 'col-lg-7' : 'col-lg-12' }} pb-5 pb-lg-0 px-3 px-lg-5">
-                        <h1 class="display-4 mb-4"><span class="text-primary">{{ $section['title'] }}</span></h1>
-                        <h4 class="text-secondary mb-3">{{ $section['sub_title'] }}</h4>
-                        <h5 class="text-muted mb-3">{{ Str::limit($section['short_description'], 70, '...') }}</h5>
-                        <p class="mb-4">{!! Str::limit($section['detailed_description'], 800, '...') !!}</p>
-                        <a href="{{ route('sectionDetail', $section['slug']) }}"
-                            class="btn btn-lg btn-primary mt-3 px-4">View
-                            More</a>
-                    </div>
-                    @if ($section->hasMedia('file'))
-                        <div class="col-lg-5">
-                            <div class="row px-3">
-                                <div class="col-12 p-0">
-                                    @if (str_contains($section->getMedia('file')[0]->mime_type, 'image'))
-                                        <img class="img-fluid " src="{{ $section->getMedia('file')[0]->getFullUrl() }}"
-                                            alt="">
-                                    @else
-                                        <video width="100" height="100" controls>
-                                            <source src="{{ $section->getMedia('file')[0]->getFullUrl() }}"
-                                                type="video/mp4">
-                                            {{-- <source src="movie.ogg" type="video/ogg"> --}}
-                                            Your browser does not support the video tag.
-                                        </video>
-                                    @endif
+    @if ($landingPageData != null)
+        <div class="container py-5">
+            @foreach ($landingPageData['sections'] as $section)
+                @if ($loop->odd)
+                    <div class="row py-5">
+                        <div class="{{ $section->hasMedia('file') ? 'col-lg-7' : 'col-lg-12' }} pb-5 pb-lg-0 px-3 px-lg-5">
+                            <h1 class="display-4 mb-4"><span class="text-primary">{{ $section['title'] }}</span></h1>
+                            <h4 class="text-secondary mb-3">{{ $section['sub_title'] }}</h4>
+                            <h5 class="text-muted mb-3">{{ Str::limit($section['short_description'], 70, '...') }}</h5>
+                            <p class="mb-4 text-justify">{!! Str::limit($section['detailed_description'], 800, '...') !!}</p>
+                            <a href="{{ route('sectionDetail', $section['slug']) }}"
+                                class="btn btn-lg btn-primary mt-3 px-4">View
+                                More</a>
+                        </div>
+                        @if ($section->hasMedia('file'))
+                            <div class="col-lg-5">
+                                <div class="row px-3">
+                                    <div class="col-12 p-0">
+                                        @if (str_contains($section->getMedia('file')[0]->mime_type, 'image'))
+                                            <img class="img-fluid " src="{{ $section->getMedia('file')[0]->getFullUrl() }}"
+                                                alt="">
+                                        @else
+                                            <video style="width: 100%" controls autoplay muted>
+                                                <source src="{{ $section->getMedia('file')[0]->getFullUrl() }}"
+                                                    type="video/mp4">
+                                                {{-- <source src="movie.ogg" type="video/ogg"> --}}
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endif
-                </div>
-            @elseif ($loop->even)
-                <div class="row py-5">
-                    @if ($section->hasMedia('file'))
-                        <div class="col-lg-5">
-                            <div class="row px-3">
-                                <div class="col-12 p-0">
-                                    @if (str_contains($section->getMedia('file')[0]->mime_type, 'image'))
-                                        <img class="img-fluid " src="{{ $section->getMedia('file')[0]->getFullUrl() }}"
-                                            alt="">
-                                    @else
-                                        <video width="100" height="100" controls>
-                                            <source src="{{ $section->getMedia('file')[0]->getFullUrl() }}"
-                                                type="video/mp4">
-                                            {{-- <source src="movie.ogg" type="video/ogg"> --}}
-                                            Your browser does not support the video tag.
-                                        </video>
-                                    @endif
+                        @endif
+                    </div>
+                @elseif ($loop->even)
+                    <div class="row py-5">
+                        @if ($section->hasMedia('file'))
+                            <div class="col-lg-5">
+                                <div class="row px-3">
+                                    <div class="col-12 p-0">
+                                        @if (str_contains($section->getMedia('file')[0]->mime_type, 'image'))
+                                            <img class="img-fluid " src="{{ $section->getMedia('file')[0]->getFullUrl() }}"
+                                                alt="">
+                                        @else
+                                            <video style="width: 100%" controls autoplay muted>
+                                                <source src="{{ $section->getMedia('file')[0]->getFullUrl() }}"
+                                                    type="video/mp4">
+                                                {{-- <source src="movie.ogg" type="video/ogg"> --}}
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
+                        @endif
+                        <div class="{{ $section->hasMedia('file') ? 'col-lg-7' : 'col-lg-12' }} pb-5 pb-lg-0 px-3 px-lg-5">
+                            <h1 class="display-4 mb-4"><span class="text-primary">{{ $section['title'] }}</span></h1>
+                            <h4 class="text-secondary mb-3">{{ $section['sub_title'] }}</h4>
+                            <h5 class="text-muted mb-3">{{ Str::limit($section['short_description'], 70, '...') }}</h5>
+                            <p class="mb-4">{!! Str::limit($section['detailed_description'], 800, '...') !!}</p>
+                            <a href="{{ route('sectionDetail', $section['slug']) }}"
+                                class="btn btn-lg btn-primary mt-3 px-4">View
+                                More</a>
                         </div>
-                    @endif
-                    <div class="{{ $section->hasMedia('file') ? 'col-lg-7' : 'col-lg-12' }} pb-5 pb-lg-0 px-3 px-lg-5">
-                        <h1 class="display-4 mb-4"><span class="text-primary">{{ $section['title'] }}</span></h1>
-                        <h4 class="text-secondary mb-3">{{ $section['sub_title'] }}</h4>
-                        <h5 class="text-muted mb-3">{{ Str::limit($section['short_description'], 70, '...') }}</h5>
-                        <p class="mb-4">{!! Str::limit($section['detailed_description'], 800, '...') !!}</p>
-                        <a href="{{ route('sectionDetail', $section['slug']) }}"
-                            class="btn btn-lg btn-primary mt-3 px-4">View
-                            More</a>
+
                     </div>
+                @endif
+            @endforeach
 
-                </div>
-            @endif
-        @endforeach
-
-    </div>
+        </div>
+    @endif
     <!-- About End -->
 @endsection

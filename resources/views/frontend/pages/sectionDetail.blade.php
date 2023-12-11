@@ -12,7 +12,7 @@
                         src="{{ $section->hasMedia('file') ? $section->getMedia('file')[0]->getFullUrl() : '' }}"
                         alt="">
                 @else
-                    <video width="100" height="100" controls>
+                    <video style="width: 100%" controls autoplay muted>
                         <source src="{{ $section->getMedia('file')[0]->getFullUrl() }}" type="video/mp4">
                         {{-- <source src="movie.ogg" type="video/ogg"> --}}
                         Your browser does not support the video tag.
