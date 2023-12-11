@@ -108,11 +108,11 @@
             </div>
             <div class="collapse navbar-nav navbar-collapse justify-content-between px-3" id="navbarCollapse">
                 <div class="navbar-nav ml-auto py-0">
-                    <a href="{{ route('welcome') }}" class="nav-item nav-link active">Home</a>
-                    @foreach ($pages as $page)
+                    <a href="{{ route('welcome') }}" class="nav-item nav-link {{ request()->route()->getName() == 'welcome'? 'active': '' }}">Home</a>
+                    @foreach (pages() as $page)
                     @if ($page->is_nav_page && $page->parentPage == null)
-                    <div class="nav-item dropdown">
-                        <a href="{{ route('pageDetail', $page->slug) }}" class="nav-link {{ count($page->childPages) > 0 ? 'dropdown-toggle' : '' }}" data-toggle="dropdown">{{ $page->title }}</a>
+                    <div class="nav-item dropdown" onclick="location.href = '{{ route('pageDetail', $page->slug) }}'">
+                        <a href="{{ route('pageDetail', $page->slug) }}" class="nav-link {{ request()->url() == route('pageDetail', $page->slug) ? 'active' : '' }} {{ count($page->childPages) > 0 ? 'dropdown-toggle' : '' }}" data-toggle="dropdown">{{ $page->title }}</a>
                         @if (count($page->childPages) > 0)
                         <div class="dropdown-menu rounded-0 m-0">
                             @foreach ($page->childPages as $childPage)
