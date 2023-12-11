@@ -59,13 +59,16 @@ class SectionController extends Controller
                         } else {
                             $sectionId = $section['section_id'];
                         }
-                        DB::table('page_section')->insert(
-                            [
-                                'page_id' => $page,
-                                'section_id' => $sectionId,
-                                'hierarchy' => getLatestHierarchy($sectionId, $page)
-                            ]
-                        );
+                        if (DB::table('page_section')->where('page_id', $page)->where('section_id', $sectionId)->first() == null) {
+
+                            DB::table('page_section')->insert(
+                                [
+                                    'page_id' => $page,
+                                    'section_id' => $sectionId,
+                                    'hierarchy' => getLatestHierarchy($sectionId, $page)
+                                ]
+                            );
+                        }
                     }
                 }
                 if (array_key_exists('file', $data)) {

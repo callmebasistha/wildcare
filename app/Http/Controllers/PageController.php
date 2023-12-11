@@ -50,12 +50,13 @@ class PageController extends Controller
                 $page = Page::create($data);
                 if (array_key_exists('sections', $data)) {
                     foreach ($data['sections'] as $section) {
-
-                        DB::table('page_section')->insert([
-                            'page_id' => $page['id'],
-                            'section_id' => $section,
-                            'hierarchy' => getLatestHierarchy($section, $page['id'])
-                        ]);
+                        if (DB::table('page_section')->where('page_id', $page['id'])->where('section_id', $section)->first() == null) {
+                            DB::table('page_section')->insert([
+                                'page_id' => $page['id'],
+                                'section_id' => $section,
+                                'hierarchy' => getLatestHierarchy($section, $page['id'])
+                            ]);
+                        }
                     }
                 }
             });
