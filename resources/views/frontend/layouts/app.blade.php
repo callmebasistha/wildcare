@@ -113,7 +113,7 @@
                 <div class="navbar-nav ml-auto py-0">
                     <a href="{{ route('welcome') }}"
                         class="nav-item nav-link {{ request()->route()->getName() == 'welcome'? 'active': '' }}">Home</a>
-                    @foreach (pages() as $page)
+                    @foreach (navPages() as $page)
                         @if ($page->is_nav_page && $page->parentPage == null)
                             <div class="nav-item dropdown"
                                 onclick="redirectToPage(`{{ route('pageDetail', $page->slug) }}`)">
@@ -210,14 +210,10 @@
                     <div class="col-md-4 mb-5">
                         <h5 class="text-primary mb-4">Popular Links</h5>
                         <div class="d-flex flex-column justify-content-start">
-                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About
-                                Us</a>
-                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our
-                                Services</a>
-                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our
-                                Team</a>
-                            <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                            @foreach (footerPages() as $fp)
+                                <a class="text-white" href="{{ route('pageDetail', $fp->slug) }}"><i
+                                        class="fa fa-angle-right mr-2"></i>{{ $fp->title }}</a>
+                            @endforeach
                         </div>
                     </div>
                     <div class="col-md-4 mb-5">

@@ -20,7 +20,12 @@ function getLatestHierarchy($sectionId, $pageId)
         return 1;
     }
 }
-function pages()
+function navPages()
 {
-    return Page::where('slug', '!=', 'home')->with('parentPage', 'childPages')->get();
+    return Page::where('slug', '!=', 'home')->where('status', true)->with('parentPage', 'childPages')->get();
+}
+
+function footerPages()
+{
+    return Page::where('slug', '!=', 'home')->where('status', true)->where('is_footer_link', true)->with('parentPage', 'childPages')->get();
 }

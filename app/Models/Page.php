@@ -14,7 +14,8 @@ class Page extends Model
         'slug',
         'page_id',
         'status',
-        'is_nav_page'
+        'is_nav_page',
+        'is_footer_link'
     ];
 
 
