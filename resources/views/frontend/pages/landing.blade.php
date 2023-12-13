@@ -10,7 +10,7 @@
                             <img class="d-block w-100" src="{{ $slider->getMedia('slider')[0]->getFullUrl() }}"
                                 alt="Image">
                         @else
-                            <video class="d-block w-100">
+                            <video class="d-block w-100" controls autoplay muted>
                                 <source src="{{ $slider->getMedia('slider')[0]->getFullUrl() }}" type="video/mp4">
                                 {{-- <source src="movie.ogg" type="video/ogg"> --}}
                                 Your browser does not support the video tag.
@@ -21,9 +21,9 @@
                                 <h3 class="text-white mb-3 d-none d-sm-block">{{ $slider->title }}</h3>
                                 <h1 class="display-3 text-white mb-3">{{ $slider->sub_title }}</h1>
                                 <!-- <h5 class="text-white mb-3 d-none d-sm-block">Duo nonumy et dolor tempor no et. Diam sit
-                                                                                                                                                                                                                                    diam sit diam erat</h5> -->
+                                                                                                                                                                                                                                            diam sit diam erat</h5> -->
                                 <!-- <a href="" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Book Now</a>
-                                                                                                                                                                                                                                <a href="" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Learn More</a> -->
+                                                                                                                                                                                                                                        <a href="" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Learn More</a> -->
                             </div>
                         </div>
                     </div>
@@ -161,7 +161,7 @@
                             <h5 class="text-muted mb-3">{{ Str::limit($section['short_description'], 70, '...') }}</h5>
                             <p class="mb-4 text-justify">{!! Str::limit($section['detailed_description'], 800, '...') !!}</p>
                             <a href="{{ route('sectionDetail', $section['slug']) }}"
-                                class="btn btn-lg btn-primary mt-3 px-4">View
+                                class="btn btn-lg btn-primary mt-3 px-4">Read
                                 More</a>
                         </div>
                         @if ($section->hasMedia('file'))
