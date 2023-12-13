@@ -12,7 +12,8 @@
     <link href="{{ asset('fabicon16x16.png') }}" rel="icon">
 
     <!-- Google Web Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Nunito:wght@600;700;800&display=swap"
+        rel="stylesheet">
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -89,7 +90,8 @@
 
     <!-- Navbar Start -->
     <div class="container-fluid p-0  ">
-        <nav class="navbar navbar-animate navbar-expand-lg  navbar-dark bg-dark py-3 py-sm-0 px-sm-5 fixed-top" id="nav" data-spy="affix">
+        <nav class="navbar navbar-animate navbar-expand-lg  navbar-dark bg-dark py-3 py-sm-0 px-sm-5 fixed-top"
+            id="nav" data-spy="affix">
             <div class="col-lg-4">
                 <a href="" class="navbar-brand d-none d-lg-block justify-content-center">
                     <!-- <h1 class="m-0 display-5 text-capitalize"><span class="text-primary">Pet</span>Lover</h1> -->
@@ -99,7 +101,8 @@
             <div class="d-flex">
 
                 <a href="" class="navbar-brand d-block d-lg-none">
-                    <img class="w-25 m-0 display-5" src="{{ asset('brand_original.png') }}" alt="" srcset="" />
+                    <img class="w-25 m-0 display-5" src="{{ asset('brand_original.png') }}" alt=""
+                        srcset="" />
                     <!-- <h1 class="m-0 display-5"><span class="text-primary">Safety</span>First</h1> -->
                 </a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -108,20 +111,25 @@
             </div>
             <div class="collapse navbar-nav navbar-collapse justify-content-between px-3" id="navbarCollapse">
                 <div class="navbar-nav ml-auto py-0">
-                    <a href="{{ route('welcome') }}" class="nav-item nav-link {{ request()->route()->getName() == 'welcome'? 'active': '' }}">Home</a>
+                    <a href="{{ route('welcome') }}"
+                        class="nav-item nav-link {{ request()->route()->getName() == 'welcome'? 'active': '' }}">Home</a>
                     @foreach (pages() as $page)
-                    @if ($page->is_nav_page && $page->parentPage == null)
-                    <div class="nav-item dropdown" onclick="location.href = '{{ route('pageDetail', $page->slug) }}'">
-                        <a href="{{ route('pageDetail', $page->slug) }}" class="nav-link {{ request()->url() == route('pageDetail', $page->slug) ? 'active' : '' }} {{ count($page->childPages) > 0 ? 'dropdown-toggle' : '' }}" data-toggle="dropdown">{{ $page->title }}</a>
-                        @if (count($page->childPages) > 0)
-                        <div class="dropdown-menu rounded-0 m-0">
-                            @foreach ($page->childPages as $childPage)
-                            <a href="{{ route('pageDetail', $childPage->slug) }}" class="dropdown-item">{{ $childPage->title }}</a>
-                            @endforeach
-                        </div>
+                        @if ($page->is_nav_page && $page->parentPage == null)
+                            <div class="nav-item dropdown"
+                                onclick="redirectToPage(`{{ route('pageDetail', $page->slug) }}`)">
+                                <a href="{{ route('pageDetail', $page->slug) }}"
+                                    class="nav-link {{ request()->url() == route('pageDetail', $page->slug) ? 'active' : '' }} {{ count($page->childPages) > 0 ? 'dropdown-toggle' : '' }}"
+                                    data-toggle="dropdown">{{ $page->title }}</a>
+                                @if (count($page->childPages) > 0)
+                                    <div class="dropdown-menu rounded-0 m-0">
+                                        @foreach ($page->childPages as $childPage)
+                                            <a href="{{ route('pageDetail', $childPage->slug) }}"
+                                                class="dropdown-item">{{ $childPage->title }}</a>
+                                        @endforeach
+                                    </div>
+                                @endif
+                            </div>
                         @endif
-                    </div>
-                    @endif
                     @endforeach
                     <!-- <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">About</a>
@@ -186,10 +194,17 @@
                         <p><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
                         <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
                         <div class="d-flex justify-content-start mt-4">
-                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                                style="width: 36px; height: 36px;" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                                style="width: 36px; height: 36px;" href="#"><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                                style="width: 36px; height: 36px;" href="#"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                                style="width: 36px; height: 36px;" href="#"><i
+                                    class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                     <div class="col-md-4 mb-5">
@@ -209,10 +224,12 @@
                         <h5 class="text-primary mb-4">Newsletter</h5>
                         <form action="">
                             <div class="form-group">
-                                <input type="text" class="form-control border-0" placeholder="Your Name" required="required" />
+                                <input type="text" class="form-control border-0" placeholder="Your Name"
+                                    required="required" />
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control border-0" placeholder="Your Email" required="required" />
+                                <input type="email" class="form-control border-0" placeholder="Your Email"
+                                    required="required" />
                             </div>
                             <div>
                                 <button class="btn btn-lg btn-primary btn-block border-0" type="submit">Submit
@@ -280,6 +297,10 @@
                 top: $('#slider-content').offset().top
             }
         });
+
+        function redirectToPage(url) {
+            location.href = url
+        }
     </script>
 </body>
 

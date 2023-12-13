@@ -31,7 +31,7 @@ class PageController extends Controller
 
     public function createForm()
     {
-        $pages = Page::where('status', '1')->get();
+        $pages = Page::where('page_id', null)->where('slug', '!=', 'home')->where('status', '1')->get();
         $sections = Section::where('status', 1)->where('section_id', null)->get();
         return view('backend.pages.page.createForm', compact('pages', 'sections'));
     }

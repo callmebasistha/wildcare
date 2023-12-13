@@ -84,9 +84,11 @@
                                         {{ $page->status == 1 ? 'Active' : 'In Active' }}</span>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-info btn-rounded btn-icon" data-bs-toggle="modal"
-                                        data-bs-target="#delete{{ $page->id }}">
-                                        <i class="mdi mdi-delete-forever"></i> </button>
+                                    @if ($page->slug != 'home')
+                                        <button type="button" class="btn btn-info btn-rounded btn-icon"
+                                            data-bs-toggle="modal" data-bs-target="#delete{{ $page->id }}">
+                                            <i class="mdi mdi-delete-forever"></i> </button>
+                                    @endif
 
 
                                 </td>
