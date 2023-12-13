@@ -41,7 +41,7 @@
                                     {{ $section->sub_title == null ? '-' : $section->sub_title }}
                                 </td>
                                 <td>
-                                    {{ $section->short_description == null ? '-' : $section->short_description }}
+                                    {{ $section->short_description == null ? '-' : Str::limit($section->short_description, 70, '...') }}
                                 </td>
                                 <td>{{ $section->section_id == null ? '-' : $section->parentSection->title }}</td>
                                 <td>

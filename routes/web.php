@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactInfoController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
@@ -58,6 +59,11 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/', [SectionController::class, 'store'])->name('store');
             Route::get('/delete/{id}', [SectionController::class, 'destroy'])->name('destroy');
             // Route::post('/update/{id}', [PageController::class, 'update'])->name('update');
+        });
+
+        Route::group(['prefix' => 'contact-info', 'as' => 'contact-info.'], function () {
+            Route::get('/', [ContactInfoController::class, 'index'])->name('index');
+            Route::post('/', [ContactInfoController::class, 'saveContactInfo'])->name('saveContactInfo');
         });
     });
 });

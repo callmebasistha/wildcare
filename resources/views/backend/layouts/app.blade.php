@@ -237,6 +237,12 @@
                             <i class="mdi mdi-image-area menu-icon"></i>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('dashboard.contact-info.index') }}">
+                            <span class="menu-title">Contact Info</span>
+                            <i class="mdi mdi-image-area menu-icon"></i>
+                        </a>
+                    </li>
 
 
 
@@ -363,6 +369,7 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
 
     @stack('scripts')
+
 
 </body>
 
