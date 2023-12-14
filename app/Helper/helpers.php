@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\ContactInfo;
 use App\Models\Page;
 use Illuminate\Support\Facades\DB;
 
@@ -28,4 +29,8 @@ function navPages()
 function footerPages()
 {
     return Page::where('slug', '!=', 'home')->where('status', true)->where('is_footer_link', true)->with('parentPage', 'childPages')->get();
+}
+function contactInfos()
+{
+    return ContactInfo::get();
 }
