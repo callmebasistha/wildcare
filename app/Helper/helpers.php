@@ -30,10 +30,6 @@ function footerPages()
 {
     return Page::where('slug', '!=', 'home')->where('status', true)->where('is_footer_link', true)->with('parentPage', 'childPages')->get();
 }
-function contactInfos()
-{
-    return ContactInfo::get();
-}
 
 function getContactInfo($label)
 {
@@ -41,6 +37,10 @@ function getContactInfo($label)
     $data = [];
     if ($info) {
         $data = explode(",", $info->value);
+    }
+    // get only two maximum data for footer section
+    if (count($data) > 2) {
+        return  array_splice($data, 2);
     }
     return $data;
 }
