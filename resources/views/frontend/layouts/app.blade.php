@@ -190,13 +190,13 @@
                 <div class="row">
                     <div class="col-md-4 mb-5">
                         <h5 class="text-primary mb-4">Get In Touch</h5>
-                        @foreach (getContactInfo('address') as $address)
+                        @foreach (getContactInfoFooter('address') as $address)
                             <p><i class="fa fa-map-marker-alt mr-2"></i>{{ $address }}</p>
                         @endforeach
-                        @foreach (getContactInfo('phone') as $phone)
+                        @foreach (getContactInfoFooter('phone') as $phone)
                             <p><i class="fa fa-phone-alt mr-2"></i>{{ $phone }}</p>
                         @endforeach
-                        @foreach (getContactInfo('email') as $email)
+                        @foreach (getContactInfoFooter('email') as $email)
                             <p><i class="fa fa-envelope mr-2"></i>{{ $email }}</p>
                         @endforeach
 

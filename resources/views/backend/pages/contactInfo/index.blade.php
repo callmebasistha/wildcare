@@ -18,11 +18,33 @@
                             <a class="btn btn-success" onclick="addExtra('address','address_box')">Add +</a>
                         </div>
                         <div class="row" id="address_box">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input name="address[]" type="text" class="form-control " placeholder="Address">
+                            @if (count(getContactInfo('address')) <= 0)
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input name="address[]" type="text" class="form-control " placeholder="Address">
+                                    </div>
                                 </div>
-                            </div>
+                            @else
+                                @foreach (getContactInfo('address') as $address)
+                                    @if ($loop->first)
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <input name="address[]" type="text" value="{{ $address }}"
+                                                    class="form-control " placeholder="Address">
+                                            </div>
+                                        </div>
+                                    @else
+                                        <div class="col-lg-6">
+                                            <div class="form-group d-flex">
+                                                <input name="address[]" value="{{ $address }}" type="text"
+                                                    class="form-control " placeholder="Address">
+                                                <a class="btn btn-danger" onclick="removeExtra()">X</a>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            @endif
+
                         </div>
                     </div>
                     <div class="row">
@@ -35,11 +57,32 @@
                             <a class="btn btn-success" onclick="addExtra('phone','phone_box')">Add +</a>
                         </div>
                         <div class="row" id="phone_box">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input name="phone[]" type="text" class="form-control " placeholder="Phone">
+                            @if (count(getContactInfo('phone')) <= 0)
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input name="phone[]" type="text" class="form-control " placeholder="Phone">
+                                    </div>
                                 </div>
-                            </div>
+                            @else
+                                @foreach (getContactInfo('phone') as $phone)
+                                    @if ($loop->first)
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <input name="phone[]" type="text" value="{{ $phone }}"
+                                                    class="form-control " placeholder="Phone">
+                                            </div>
+                                        </div>
+                                    @else
+                                        <div class="col-lg-6">
+                                            <div class="form-group d-flex">
+                                                <input name="phone[]" value="{{ $phone }}" type="text"
+                                                    class="form-control " placeholder="Phone">
+                                                <a class="btn btn-danger" onclick="removeExtra()">X</a>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                     <div class="row">
@@ -52,11 +95,32 @@
                             <a class="btn btn-success" onclick="addExtra('email','email_box')">Add +</a>
                         </div>
                         <div class="row" id="email_box">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input name="email[]" type="text" class="form-control " placeholder="Email">
+                            @if (count(getContactInfo('email')) <= 0)
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input name="email[]" type="text" class="form-control " placeholder="Email">
+                                    </div>
                                 </div>
-                            </div>
+                            @else
+                                @foreach (getContactInfo('email') as $email)
+                                    @if ($loop->first)
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <input name="email[]" type="text" value="{{ $email }}"
+                                                    class="form-control " placeholder="Email">
+                                            </div>
+                                        </div>
+                                    @else
+                                        <div class="col-lg-6">
+                                            <div class="form-group d-flex">
+                                                <input name="email[]" value="{{ $email }}" type="text"
+                                                    class="form-control " placeholder="Email">
+                                                <a class="btn btn-danger" onclick="removeExtra()">X</a>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                     <button type="submit" class="btn btn-gradient-success me-2">Submit</button>

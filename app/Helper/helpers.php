@@ -38,6 +38,20 @@ function getContactInfo($label)
     if ($info) {
         $data = explode(",", $info->value);
     }
+    // // get only two maximum data for footer section
+    // if (count($data) > 2) {
+    //     return  array_splice($data, 2);
+    // }
+    return $data;
+}
+
+function getContactInfoFooter($label)
+{
+    $info = ContactInfo::where('label', $label)->first();
+    $data = [];
+    if ($info) {
+        $data = explode(",", $info->value);
+    }
     // get only two maximum data for footer section
     if (count($data) > 2) {
         return  array_splice($data, 2);
