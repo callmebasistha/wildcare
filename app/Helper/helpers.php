@@ -34,3 +34,13 @@ function contactInfos()
 {
     return ContactInfo::get();
 }
+
+function getContactInfo($label)
+{
+    $info = ContactInfo::where('label', $label)->first();
+    $data = [];
+    if ($info) {
+        $data = explode(",", $info->value);
+    }
+    return $data;
+}

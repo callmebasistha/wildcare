@@ -12,6 +12,7 @@ class ContactInfoController extends Controller
 {
     function index()
     {
+
         return view('backend.pages.contactInfo.index');
     }
     function saveContactInfo(Request $request)
@@ -21,16 +22,17 @@ class ContactInfoController extends Controller
             DB::transaction(function () use ($data) {
 
                 //code...
+                ContactInfo::truncate();
+
                 foreach ($data as $key => $datum) {
                     $insert['label'] = $key;
-                    foreach ($datum as $item) {
-                        $insert['value'] = $item;
-                        ContactInfo::create($insert);
-                    }
+                    $insert['value'] = implode(",", array_filter($data[$key]));
+                    ContactInfo::create($insert);
                 }
                 Alert::toast('success');
             });
         } catch (\Throwable $th) {
+            dd($th);
             Alert::toast($th->getMessage(), 'error');
         }
         return back();
