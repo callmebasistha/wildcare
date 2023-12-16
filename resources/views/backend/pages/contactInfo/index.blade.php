@@ -123,6 +123,81 @@
                             @endif
                         </div>
                     </div>
+
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="page-header">
+                                    <h3 class="page-title">
+                                        <span class="page-title-icon bg-gradient-primary text-white me-2">
+                                            <i class="mdi mdi-home"></i>
+                                        </span> Facebook Link
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <input name="facebook[]" type="text" value="{{ getSocialMediaLink('facebook') }}"
+                                        placeholder="Facebook Link" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="page-header">
+                                    <h3 class="page-title">
+                                        <span class="page-title-icon bg-gradient-primary text-white me-2">
+                                            <i class="mdi mdi-home"></i>
+                                        </span> Instagram Link
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <input type="text" value="{{ getSocialMediaLink('instagram') }}"
+                                        name="instagram[]" placeholder="Instagram Link" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="page-header">
+                                    <h3 class="page-title">
+                                        <span class="page-title-icon bg-gradient-primary text-white me-2">
+                                            <i class="mdi mdi-home"></i>
+                                        </span> Linked Link
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <input name="linkedin[]" type="text" value="{{ getSocialMediaLink('linkedin') }}"
+                                        placeholder="Linkedin Link" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="page-header">
+                                    <h3 class="page-title">
+                                        <span class="page-title-icon bg-gradient-primary text-white me-2">
+                                            <i class="mdi mdi-home"></i>
+                                        </span> Twitter Link
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <input name="twitter[]" type="text" value="{{ getSocialMediaLink('twitter') }}"
+                                        placeholder="Twitter Link" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
                     <button type="submit" class="btn btn-gradient-success me-2">Submit</button>
                 </form>
             </div>

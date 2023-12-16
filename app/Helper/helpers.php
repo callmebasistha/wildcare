@@ -58,3 +58,15 @@ function getContactInfoFooter($label)
     }
     return $data;
 }
+
+function getSocialMediaLink($label)
+{
+    $info = ContactInfo::where('label', $label)->first();
+    if ($info) {
+        return $info->value;
+    } else {
+        return "";
+    }
+    // get only two maximum data for footer section
+
+}
